@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 
-class mascota
+class Mascota
 {
 private:
     /* data */
@@ -9,12 +9,11 @@ private:
     std::string nombre;
 
 public:
-    mascota()
+    Mascota()
     {
-
         this->vida = 100;
     }
-    ~mascota() {}
+    ~Mascota() {}
     void EstablecerNombre(std::string nombre)
     {
         this->nombre = nombre;
