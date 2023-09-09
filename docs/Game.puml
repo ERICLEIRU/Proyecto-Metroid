@@ -1,0 +1,223 @@
+@startuml Metroid
+
+class Juego 
+class Jugador
+
+class Pantalla
+class PantallaPause
+class PantallaJuego
+class PantallaInicio
+class Menu
+class OpcionMenu
+class OpcIniciar
+class OpcGuardar
+class OpcContinuarGuardado
+class OpcSalirPausa
+
+class Piso
+class PisoSolido
+class PisoQuebradiso
+class PisoDestruibleMisilRojo
+class PisoDestruibleMisilVerde
+class PisoDestruibleDash
+
+package PowerUps{
+class PowerUp
+class TanqueEnergia
+class MaruBall
+class Bombs
+Class VariaSuit
+class HighJump
+class ScrewAttack
+
+package Proyectiles{
+class Proyectil
+class Daño
+class Beam
+class LongBeam
+class IceBeam
+class WaveBeam
+class ShortBeam
+class Bombs
+class Misil
+class MisilRojo
+class MisilVerde
+}
+}
+
+Class Puerta
+class PuertaAzul
+class PuertaRoja
+class PuertaVerde
+
+class Contador
+class ControladorMovimiento
+class Posicion
+class AreaSolida
+class Area
+class MovimientoEstablecido
+class Teclado
+
+class Personaje
+class Enemigo
+class Floaters
+class Hoppers
+class Swoopers
+class Swarms
+class Flyers
+class Crawlers
+class Jefe
+class Ridley
+class MotherBrain
+class Kraid
+class SamusAran 
+class Energia
+
+
+class ObjetosUsable
+class CargaDeEnergia
+class CargaDeMisilRojo
+class CargaDeMisilVerde
+
+class Atmosfera
+class Agua
+class Lava 
+class Aire
+class PisoFalso
+
+class Animacion
+class Imagen
+class Sonido
+
+Juego "1" *-- "1" Jugador
+Juego "1" *-- " 3" Pantalla
+Jugador "1" o-- "1" Teclado
+Jugador "1" o-- "1" ControladorMovimiento
+
+PantallaJuego --|> Pantalla
+PantallaPause --|> Pantalla
+PantallaJuego "1" *-- "1..*" Atmosfera
+PantallaJuego  "1" *-- "1..*" Personaje
+PantallaJuego "1" *-- "1..*" Piso
+PantallaJuego "1" *-- "0..*" Puerta
+PantallaJuego "1" *-- "0..3" Proyectil
+PantallaJuego "1" *-- "1" Energia
+PantallaJuego "1" *-- "0..2" Misil
+PantallaPause "1" *-- "1" Menu
+
+Menu "1"*-- "1..3" OpcionMenu
+OpcIniciar --|> OpcionMenu
+OpcGuardar --|> OpcionMenu
+OpcContinuarGuardado --|> OpcionMenu
+OpcSalirPausa --|> OpcionMenu
+PantallaInicio "1" *-- "1" Menu
+PantallaInicio --|> Pantalla
+OpcIniciar --|> OpcionMenu
+OpcGuardar --|> OpcionMenu
+OpcContinuarGuardado --|> OpcionMenu
+OpcSalirPausa --|> OpcionMenu
+
+
+Piso "1" *-- "1" Animacion
+Piso "1" *-- "1" AreaSolida
+PisoSolido --|> Piso
+PisoDestruibleMisilRojo --|> Piso
+PisoDestruibleMisilVerde --|> Piso
+PisoDestruibleDash --|> Piso
+PisoQuebradiso --|> Piso
+
+PisoDestruibleMisilRojo "1" o-- "1" MisilRojo
+PisoDestruibleMisilVerde "1" o-- "1" MisilVerde
+PisoQuebradiso "1" o-- "1" Proyectil
+
+SamusAran "1" o-- "1..*" PowerUp
+TanqueEnergia --|> PowerUp
+MaruBall --|> PowerUp
+VariaSuit --|> PowerUp
+HighJump --|> PowerUp
+ScrewAttack --|> PowerUp
+
+Proyectil "1" *-- "1..*" Daño
+Proyectil "1" *-- "2" Animacion
+Proyectil --|> PowerUp
+Beam --|> Proyectil
+Misil --|> Proyectil
+Misil "1" *-- "1" Contador
+Bombs "1" *-- "1" Contador
+MisilRojo --|> Misil
+MisilVerde --|> Misil
+Bombs --|> Proyectil
+ShortBeam --|> Beam
+IceBeam --|> Beam
+LongBeam --|> Beam
+WaveBeam --|> Beam
+Misil "1" *-- "1" AreaSolida
+Bombs "1" *-- "1" AreaSolida
+IceBeam  "1" *-- "1" AreaSolida
+ShortBeam "1" *-- "1" AreaSolida
+LongBeam "1" *-- "1" AreaSolida
+AreaSolida "1" *-- "1..4" Area
+
+
+
+ObjetosUsable "1" *-- "1" Animacion
+ObjetosUsable "1" *-- "1" Contador
+CargaDeEnergia --|> ObjetosUsable
+CargaDeMisilRojo --|> ObjetosUsable
+CargaDeMisilVerde --|> ObjetosUsable
+
+Atmosfera "1" *-- "1" Animacion 
+Atmosfera "1" *-- "1" Posicion
+Agua --|> Atmosfera
+Lava --|> Atmosfera
+Aire --|>Atmosfera
+Lava "1" *-- "1" Daño
+PisoFalso --|> Atmosfera
+
+Enemigo --|> Personaje
+Jefe --|> Personaje
+SamusAran --|> Personaje
+ControladorMovimiento "1" o-- "1..*" Personaje
+Enemigo  "1" *-- "0,1" ObjetosUsable
+SamusAran "1" o-- "0..*" ObjetosUsable
+Personaje "1" *-- "1" Energia
+Energia "1" o-- "0..*" Daño
+Energia "1" *-- "1" Contador
+SamusAran "1" *-- "1" AreaSolida
+Personaje "1" *-- "1.. *" Animacion
+
+Floaters --|> Enemigo
+Hoppers --|> Enemigo
+Swoopers --|> Enemigo
+Swarms --|> Enemigo
+Flyers --|> Enemigo
+Crawlers --|> Enemigo
+MotherBrain --|> Jefe
+Ridley --|> Jefe
+Kraid --|> Jefe
+Enemigo "1" *-- "1" Daño
+Enemigo "1" *-- "1" AreaSolida
+Enemigo "1" *-- "1..3" Animacion
+Jefe "1" *-- "1" Daño
+Jefe "1" *-- "1" AreaSolida
+Jefe "1" *-- "1..*" Animacion 
+
+ControladorMovimiento "1" *-- "1" Posicion
+ControladorMovimiento "1" o-- "1..*" AreaSolida
+ControladorMovimiento "1" o-- "1..*" MovimientoEstablecido
+ControladorMovimiento "1" o-- "1" Teclado
+ControladorMovimiento "1" o-- "1..*" Atmosfera
+
+PuertaAzul --|> Puerta
+PuertaVerde--|> Puerta
+PuertaRoja --|> Puerta
+
+Puerta "1" *-- "1" AreaSolida
+PuertaAzul "1" o-- "1" Proyectil
+PuertaRoja "1" o-- "1" Misil
+PuertaVerde "1" o-- "1" MisilVerde
+
+
+Animacion "1" *-- "1..*" Imagen
+Animacion "1" *-- "1..*" Sonido
+
