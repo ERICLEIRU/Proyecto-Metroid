@@ -25,7 +25,6 @@ package PowerUps{
 class PowerUp
 class TanqueEnergia
 class MaruBall
-class Bombs
 Class VariaSuit
 class HighJump
 class ScrewAttack
