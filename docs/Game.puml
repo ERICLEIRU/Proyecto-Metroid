@@ -31,7 +31,7 @@ class ScrewAttack
 
 package Proyectiles{
 class Proyectil
-class Daño
+class Damage
 class Beam
 class LongBeam
 class IceBeam
@@ -136,7 +136,7 @@ VariaSuit --|> PowerUp
 HighJump --|> PowerUp
 ScrewAttack --|> PowerUp
 
-Proyectil "1" *-- "1..*" Daño
+Proyectil "1" *-- "1..*" Damage 
 Proyectil "1" *-- "2" Animacion
 Proyectil --|> PowerUp
 Beam --|> Proyectil
@@ -170,7 +170,7 @@ Atmosfera "1" *-- "1" Posicion
 Agua --|> Atmosfera
 Lava --|> Atmosfera
 Aire --|>Atmosfera
-Lava "1" *-- "1" Daño
+Lava "1" *-- "1" Damage 
 PisoFalso --|> Atmosfera
 
 Enemigo --|> Personaje
@@ -180,7 +180,7 @@ ControladorMovimiento "1" o-- "1..*" Personaje
 Enemigo  "1" *-- "0,1" ObjetosUsable
 SamusAran "1" o-- "0..*" ObjetosUsable
 Personaje "1" *-- "1" Energia
-Energia "1" o-- "0..*" Daño
+Energia "1" o-- "0..*" Damage 
 Energia "1" *-- "1" Contador
 SamusAran "1" *-- "1" AreaSolida
 Personaje "1" *-- "1.. *" Animacion
@@ -194,10 +194,10 @@ Crawlers --|> Enemigo
 MotherBrain --|> Jefe
 Ridley --|> Jefe
 Kraid --|> Jefe
-Enemigo "1" *-- "1" Daño
+Enemigo "1" *-- "1" Damage 
 Enemigo "1" *-- "1" AreaSolida
 Enemigo "1" *-- "1..3" Animacion
-Jefe "1" *-- "1" Daño
+Jefe "1" *-- "1" Damage 
 Jefe "1" *-- "1" AreaSolida
 Jefe "1" *-- "1..*" Animacion 
 

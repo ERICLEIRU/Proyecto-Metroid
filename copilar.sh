@@ -1,1 +1,1 @@
-g++ src/main.cpp -o bin/mascota -I include 
+g++ src/main.cpp -o bin/game -I include 
