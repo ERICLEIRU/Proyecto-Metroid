@@ -71,6 +71,7 @@
 #include <VariaSuit.hpp>
 #include <WaveBeam.hpp>
 
+
 int main(int argc, char const *argv[])
 { 
     std::cout << "Juego de Metroid " << std::endl;
