@@ -59,12 +59,12 @@ class Teclado
 
 class Personaje
 class Enemigo
-class Floaters
-class Hoppers
-class Swoopers
-class Swarms
-class Flyers
-class Crawlers
+class Floater
+class Hopper
+class Swooper
+class Swarm
+class Flyer
+class Crawler
 class Jefe
 class Ridley
 class MotherBrain
@@ -185,12 +185,12 @@ Energia "1" *-- "1" Contador
 SamusAran "1" *-- "1" AreaSolida
 Personaje "1" *-- "1.. *" Animacion
 
-Floaters --|> Enemigo
-Hoppers --|> Enemigo
-Swoopers --|> Enemigo
-Swarms --|> Enemigo
-Flyers --|> Enemigo
-Crawlers --|> Enemigo
+Floater --|> Enemigo
+Hopper --|> Enemigo
+Swooper --|> Enemigo
+Swarm --|> Enemigo
+Flyer --|> Enemigo
+Crawler --|> Enemigo
 MotherBrain --|> Jefe
 Ridley --|> Jefe
 Kraid --|> Jefe
