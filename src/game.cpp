@@ -74,7 +74,7 @@
 
 int main(int argc, char const *argv[])
 { 
-    std::cout << "Juego de Metroid " << std::endl;
+    std::cout << "Juego de Metroid  en windows" << std::endl;
 
     return 0;
 }
