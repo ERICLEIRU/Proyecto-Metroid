@@ -8,7 +8,7 @@ mensaje :
 ejecutarGame : bin/game 
 	./bin/game
 
-bin/game : src/game.cpp  include/Agua.hpp include/Aire.hpp include/Animacion.hpp include/Area.hpp include/Atmosfera.hpp
+bin/game : src/game.cpp  include/Agua.hpp include/Aire.hpp include*
 
 	echo "Copilando game"
 	rm bin/game
@@ -16,3 +16,10 @@ bin/game : src/game.cpp  include/Agua.hpp include/Aire.hpp include/Animacion.hpp
 
 copilarGame : src/game.cpp
 	g++ src/game.cpp -o bin/game -I include
+
+bin/game : src/game.cpp include/*
+	echo "Copilando game"
+	c++ src/game.cpp -o bin/game -I include -lcurses
+
+run : bin/game
+	./bin/game

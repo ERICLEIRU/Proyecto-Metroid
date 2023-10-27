@@ -1,10 +1,12 @@
 #pragma once
+#include <Proyectil.hpp>
 
-class Beam
+class Beam : public Proyectil
 {
 private:
     /* data */
 public:
-    Beam(/* args */) {}
+    Beam(Vector posicion): Proyectil(this-> posicion)
+     {}
     ~Beam() {}
 };
