@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
-
+#include <ControladorMovimiento.hpp>
 #include <Actualizable.hpp>
 #include <Dibujo.hpp>
 #include <Vector.hpp>
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class SamusAran : public Dibujo, public Actualizable, public HitBox
+class SamusAran : public Dibujo, public Actualizable, public HitBox, public ControladorMovimiento
 {
 private:
     /* data */
@@ -24,15 +24,36 @@ public:
         this->posicion.DesplazarX(x);
         this->posicion.DesplazarY(y);
     }
-    int Actualizar()
+    void Actualizar()
     {
 
-        this->x = this->posicion.LeerX();
-        this->y = this->posicion.LeerY();
+        this->xHitBox = this->posicion.LeerX();
+        this->yHitBox = this->posicion.LeerY();
+        this->ControlarMovimiento();
 
         this->posicion.DesplazarX(0);
 
-        return 1;
+    
+    }
+    void ControlarMovimiento(){
+            int key = getch();
+
+        if (key == 'a' || key == KEY_LEFT)
+        {
+            this->RetrocederX();
+        }
+        if (key == 'd' || key == KEY_RIGHT)
+        {
+            this->AvanzarX();
+        }
+        if (key == 'w' || key == KEY_UP)
+        {
+            this->SubirY();
+        }
+        if (key == 's' || key == KEY_DOWN)
+        {
+            this->BajarY();
+        }
     }
     void AvanzarX()
     {

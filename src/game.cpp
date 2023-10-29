@@ -19,14 +19,14 @@
 // #include <CargaDeMisilVerde.hpp>
 // #include <Contador.hpp>
 // #include <ControladorMovimiento.hpp>
-// #include <Crawler.hpp>
+#include <Crawler.hpp>
 // #include <Damage.hpp>
-// #include <Enemigo.hpp>
+#include <Enemigo.hpp>
 // #include <Energia.hpp>
 // #include <Floater.hpp>
 // #include <Flyer.hpp>
 // #include <HighJump.hpp>
-// #include <Hopper.hpp>
+#include <Hopper.hpp>
 // #include <IceBeam.hpp>
 // #include <Imagen.hpp>
 // #include <Jefe.hpp>
@@ -86,48 +86,68 @@ int main(int argc, char const *argv[])
     Ventana *ventana = new Ventana();
     list<Dibujo *> dibujos;
     list<Actualizable *> actualizables;
+    list<Proyectil *> proyectiles;
 
     SamusAran *samus0 = new SamusAran(10, 10);
     dibujos.push_back(samus0);
     actualizables.push_back(samus0);
+    Crawler* crawler0 = new Crawler(100,5);
+    dibujos.push_back(crawler0);
+    actualizables.push_back(crawler0);
+    Hopper* hopper0 = new Hopper(150, 10);
+    dibujos.push_back(hopper0);
+    actualizables.push_back(hopper0);
 
     while (!ventana->DeboCerrar())
     {
+
         int key = getch();
 
-        if (key == 'a' || key == KEY_LEFT)
-        {
-            samus0->RetrocederX();
-        }
-        if (key == 'd' || key == KEY_RIGHT)
-        {
-            samus0->AvanzarX();
-        }
-        if (key == 'w' || key == KEY_UP)
-        {
-            samus0->SubirY();
-        }
-        if (key == 's' || key == KEY_DOWN)
-        {
-            samus0->BajarY();
-        }
+        auto tempDibujos = list<Dibujo*>(dibujos);
+        auto tempActualizables = list<Actualizable*>(actualizables);
+
+        /// Arma Disparar
         if (key == 'f' || key == ' ')
         {
 
             Beam *p = new Beam(samus0->LeerPosicion());
-            dibujos.push_back(p);
-            actualizables.push_back(p);
+            proyectiles.push_back(p);
         }
 
-        ventana->Dibujar(dibujos);
-        ventana->Actualizar(actualizables);
+        if (!proyectiles.empty())
+        {
+            /// Arma Actualizar - Actualizame
+            for (auto it = proyectiles.begin(); it != proyectiles.end();)
+            {
+                if (!(*it)->EstaVivo())
+                {
+                    it = proyectiles.erase(it);
+                }
+                else
+                {
+                    ++it;
+                }
+            }
+
+            for (auto &&p : proyectiles)
+            {
+                tempDibujos.push_back(p);
+                tempActualizables.push_back(p);
+            }
+            
+        
+        }
+
+        ventana->Actualizar(tempActualizables);
+
+        ventana->Dibujar(tempDibujos);
 
         // for (auto &&iterador : actualizables)
         // {
         //     if(iterador->Actualizar() <0){
-        //         actualizables.pop_back();
+        //         actualizables.erase(iterador);
         //     }
-            
+
         // }
 
         //  ventana.Cerrar();

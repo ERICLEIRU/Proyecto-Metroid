@@ -5,20 +5,22 @@
 class Proyectil : public Dibujo, public Actualizable
 {
 private:
-
 protected:
     int tiempoVida;
 
 public:
-    Proyectil(Vector posicion) : Dibujo(posicion.LeerX(), posicion.LeerY(), "beam")
+    Proyectil(Vector posicion, string txtName) : Dibujo(posicion.LeerX()+2, posicion.LeerY()+1, txtName)
     {
         this->tiempoVida = 15;
     }
-    int Actualizar()
+    void Actualizar()
     {
         this->posicion.DesplazarX(1);
-        this->tiempoVida --;
-        return this->tiempoVida;
+        this->tiempoVida--;
+    }
+    bool EstaVivo()
+    {
+        return this->tiempoVida > 0;
     }
     ~Proyectil() {}
 };

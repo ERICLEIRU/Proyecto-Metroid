@@ -39,7 +39,7 @@ public:
         {
             iterador->Actualizar();
         }
-        usleep(41000);
+        usleep(21000);
 
         // sleep(5);
     }

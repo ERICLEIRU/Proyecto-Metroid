@@ -6,7 +6,9 @@ class Beam : public Proyectil
 private:
     /* data */
 public:
-    Beam(Vector posicion): Proyectil(this-> posicion)
-     {}
+    Beam(Vector posicion): Proyectil(posicion, "beam")
+     {
+        this-> tiempoVida = 50; 
+     }
     ~Beam() {}
 };

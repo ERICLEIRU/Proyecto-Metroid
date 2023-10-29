@@ -6,6 +6,6 @@ private:
     /* data */
 public:
     Actualizable(/* args */) {}
-    virtual int Actualizar() {}
+    virtual void Actualizar() = 0;
     ~Actualizable() {}
 };
