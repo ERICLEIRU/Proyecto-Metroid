@@ -140,7 +140,7 @@ int main(int argc, char const *argv[])
 
         ventana->Actualizar(tempActualizables);
 
-        ventana->Dibujar(tempDibujos);
+       // ventana->Dibujar(tempDibujos);
 
         // for (auto &&iterador : actualizables)
         // {
