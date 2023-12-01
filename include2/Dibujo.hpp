@@ -1,11 +1,11 @@
 #pragma once
 #include <fstream>
 #include <string>
-#include <curses.h>
+#include <SFML/Graphics.hpp>
 #include <Vector.hpp>
 using namespace std;
 
-class Dibujo
+class Dibujo : public sf::Texture
 {
 private:
     fstream archivo; // ImagenCowASCII, ImagenCowRunASCII, ImagenCowJumpASCII;
