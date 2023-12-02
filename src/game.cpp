@@ -6,8 +6,8 @@
 #include <GestorVentana.hpp>
 #include <SFML/Graphics.hpp>
 // #include <Beam.hpp>
-// #include <Crawler.hpp>
-// #include <Enemigo.hpp>
+#include <Crawler.hpp>
+#include <Enemigo.hpp>
 // #include <Hopper.hpp>
 // #include <Proyectil.hpp>
 
@@ -18,6 +18,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     GestorVentana *ventana = new GestorVentana();
+    Crawler *crawler0 = new Crawler(100, 5);
 
     while (!ventana->DeboCerrar())
     {
@@ -33,7 +34,6 @@ int main(int argc, char const *argv[])
     // SamusAran *samus0 = new SamusAran(10, 10);
     // dibujos.push_back(samus0);
     // actualizables.push_back(samus0);
-    // Crawler* crawler0 = new Crawler(100,5);
     // dibujos.push_back(crawler0);
     // actualizables.push_back(crawler0);
     // Hopper* hopper0 = new Hopper(150, 10);
