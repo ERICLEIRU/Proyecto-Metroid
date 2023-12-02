@@ -21,7 +21,7 @@ protected:
 public:
     GestorVentana(/* args */)
     {
-        this->window.create(sf::VideoMode(200, 200), "SFML works!");
+        this->window.create(sf::VideoMode(1000, 800), "Metroid");
         sf::Event event;
     }
     void Actualizar(/*list<Actualizable *> listaActualizables*/)
