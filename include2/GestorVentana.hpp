@@ -34,9 +34,10 @@ public:
         usleep(41000);
         */
     }
-    void Dibujar(/*list<Dibujo *> listaDibujos*/)
+    void Dibujar(/*list<Dibujo *> listaDibujos*/ sf::Texture textura)
     {
         this->window.clear();
+        this->window.draw(textura);
         this->window.display();
 
         /* for (auto &&dibujo : listaDibujos)

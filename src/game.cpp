@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
     while (!ventana->DeboCerrar())
     {
 
-        ventana->Dibujar(/*dibujos*/);
+        ventana->Dibujar(crawler0->MandarTextura());
     }
 
     // Ventana *ventana = new Ventana();
