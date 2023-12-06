@@ -9,6 +9,7 @@
 #include <Crawler.hpp>
 #include <Enemigo.hpp>
 #include <Mellow.hpp>
+#include <JugadorSamus.hpp>
 // #include <Hopper.hpp>
 // #include <Proyectil.hpp>
 
@@ -23,11 +24,13 @@ int main(int argc, char const *argv[])
     Crawler *crawler1 = new Crawler(200, 400);
     Mellow *mellow0 = new Mellow(200, 300);
     Mellow *mellow1 = new Mellow(200, 200);
+    JugadorSamus *samus0 = new JugadorSamus(10, 10);
     list<Dibujo *> dibujos;
     dibujos.push_back(crawler0);
     dibujos.push_back(crawler1);
     dibujos.push_back(mellow0);
     dibujos.push_back(mellow1);
+    dibujos.push_back(samus0);
 
     while (!ventana->DeboCerrar())
     {
