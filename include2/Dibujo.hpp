@@ -14,24 +14,32 @@ private:
 protected:
     Vector posicion;
     sf::Texture textura;
+    sf::Sprite sprite;
+    sf::IntRect intRect;
+    sf::Color color;
 
 public:
-    Dibujo(int x, int y, string recurso)
+    Dibujo(int posicionX, int posicionY, string recurso, int largoHitBox, int alturaHitbox, int inicioSpriteX, int inicioSpriteY)
     {
 
         this->directorio = "./imagenes/" + recurso + ".png";
-        this->posicion = Vector(x, y);
+        this->posicion = Vector(posicionX, posicionY);
         this->textura.loadFromFile(directorio);
+        this->sprite.setTexture(textura);
+        this->intRect = sf::IntRect(inicioSpriteX, inicioSpriteY, largoHitBox, alturaHitbox);
+        this->sprite.setTextureRect(intRect);
+        this->color = sf::Color(0, 255, 0);
+        // this->sprite.setColor(color);
+        this->sprite.setPosition(posicionX, posicionY);
     }
-    Dibujo(string recurso) : Dibujo(0, 0, recurso)
+    Dibujo(string recurso) : Dibujo(0, 0, recurso, 0, 0, 0, 0)
     {
     }
-    sf::Texture MandarTextura()
+    sf::Sprite MandarSprite()
     {
-        return textura;
+        return this->sprite;
     }
     ~Dibujo()
     {
-        // archivo.close();
     }
 };

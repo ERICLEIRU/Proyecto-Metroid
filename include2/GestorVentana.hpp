@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
-// #include <Dibujo.hpp>
+#include <Dibujo.hpp>
 // #include <Actualizable.hpp>
 #include <list>
 
@@ -34,16 +34,14 @@ public:
         usleep(41000);
         */
     }
-    void Dibujar(/*list<Dibujo *> listaDibujos*/ sf::Texture textura)
+    void Dibujar(list<Dibujo *> listaDibujos)
     {
         this->window.clear();
-        this->window.draw(textura);
+        for (auto &&dibujo : listaDibujos)
+        {
+            this->window.draw(dibujo->MandarSprite());
+        }
         this->window.display();
-
-        /* for (auto &&dibujo : listaDibujos)
-         {
-             dibujo->Dibujar();
-         }*/
     }
     bool DeboCerrar()
     {

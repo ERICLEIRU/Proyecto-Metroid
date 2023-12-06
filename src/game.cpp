@@ -8,6 +8,7 @@
 // #include <Beam.hpp>
 #include <Crawler.hpp>
 #include <Enemigo.hpp>
+#include <Mellow.hpp>
 // #include <Hopper.hpp>
 // #include <Proyectil.hpp>
 
@@ -18,16 +19,22 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     GestorVentana *ventana = new GestorVentana();
-    Crawler *crawler0 = new Crawler(100, 5);
+    Crawler *crawler0 = new Crawler(200, 515);
+    Crawler *crawler1 = new Crawler(200, 400);
+    Mellow *mellow0 = new Mellow(200, 300);
+    Mellow *mellow1 = new Mellow(200, 200);
+    list<Dibujo *> dibujos;
+    dibujos.push_back(crawler0);
+    dibujos.push_back(crawler1);
+    dibujos.push_back(mellow0);
+    dibujos.push_back(mellow1);
 
     while (!ventana->DeboCerrar())
     {
-
-        ventana->Dibujar(crawler0->MandarTextura());
+        ventana->Dibujar(dibujos);
     }
 
     // Ventana *ventana = new Ventana();
-    // list<Dibujo *> dibujos;
     // list<Actualizable *> actualizables;
     // list<Proyectil *> proyectiles;
 
