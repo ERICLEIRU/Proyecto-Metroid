@@ -24,21 +24,33 @@ int main(int argc, char const *argv[])
     Crawler *crawler1 = new Crawler(200, 400);
     Mellow *mellow0 = new Mellow(200, 300);
     Mellow *mellow1 = new Mellow(200, 200);
-    JugadorSamus *samus0 = new JugadorSamus(10, 10);
+    JugadorSamus *samus0 = new JugadorSamus(400, 300);
     list<Dibujo *> dibujos;
+
     dibujos.push_back(crawler0);
     dibujos.push_back(crawler1);
     dibujos.push_back(mellow0);
     dibujos.push_back(mellow1);
     dibujos.push_back(samus0);
+    list<Actualizable *> actualizables;
+    actualizables.push_back(crawler0);
+    actualizables.push_back(crawler1);
+    actualizables.push_back(mellow0);
+    actualizables.push_back(mellow1);
+    actualizables.push_back(samus0);
 
     while (!ventana->DeboCerrar())
     {
         ventana->Dibujar(dibujos);
+        for (auto &&actual : actualizables)
+        {
+            actual->Actualizar();
+        }
+        sleep(0.5);
     }
 
     // Ventana *ventana = new Ventana();
-    // list<Actualizable *> actualizables;
+    //
     // list<Proyectil *> proyectiles;
 
     // SamusAran *samus0 = new SamusAran(10, 10);

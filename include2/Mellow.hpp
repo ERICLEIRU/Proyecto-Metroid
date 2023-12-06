@@ -10,5 +10,13 @@ public:
     {
         this->vida = 5;
     }
+    void Actualizar()
+    {
+        if (this->posicion.LeerY() > 790 && this->posicion.LeerDireccionY() == 1 || this->posicion.LeerY() < 0 && this->posicion.LeerDireccionY() == -1)
+            this->posicion.CambiarDireccionY();
+
+        this->posicion.DesplazarY(1);
+        this->sprite.setPosition(this->posicion.LeerX(), this->posicion.LeerY());
+    }
     ~Mellow() {}
 };

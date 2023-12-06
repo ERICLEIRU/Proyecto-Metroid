@@ -12,6 +12,7 @@ private:
     string directorio;
 
 protected:
+    /// @brief
     Vector posicion;
     sf::Texture textura;
     sf::Sprite sprite;
@@ -28,8 +29,8 @@ public:
         this->sprite.setTexture(textura);
         this->intRect = sf::IntRect(inicioSpriteX, inicioSpriteY, largoHitBox, alturaHitbox);
         this->sprite.setTextureRect(intRect);
-        this->color = sf::Color(0, 255, 0);
-        // this->sprite.setColor(color);
+        this->color = sf::Color(255, 255, 255);
+        this->sprite.setColor(color);
         this->sprite.setPosition(posicionX, posicionY);
     }
     Dibujo(string recurso) : Dibujo(0, 0, recurso, 0, 0, 0, 0)

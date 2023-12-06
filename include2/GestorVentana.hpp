@@ -17,12 +17,15 @@ private:
 protected:
     sf::RenderWindow window;
     sf::Event event;
+    sf::RectangleShape fondo;
 
 public:
     GestorVentana(/* args */)
     {
-        this->window.create(sf::VideoMode(1000, 800), "Metroid");
+        this->window.create(sf::VideoMode(800, 600), "Metroid");
         sf::Event event;
+        fondo.setSize(sf::Vector2f(800, 800));
+        fondo.setFillColor(sf::Color(115, 115, 115));
     }
     void Actualizar(/*list<Actualizable *> listaActualizables*/)
     {
@@ -37,6 +40,7 @@ public:
     void Dibujar(list<Dibujo *> listaDibujos)
     {
         this->window.clear();
+        this->window.draw(fondo);
         for (auto &&dibujo : listaDibujos)
         {
             this->window.draw(dibujo->MandarSprite());

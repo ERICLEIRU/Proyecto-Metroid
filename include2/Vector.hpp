@@ -52,5 +52,13 @@ public:
     {
         this->y += y * this->direccion_y;
     }
+    void AsignarY(unsigned int Y)
+    {
+        this->y = Y;
+    }
+    void AsignarX(unsigned int X)
+    {
+        this->x = X;
+    }
     ~Vector() {}
 };

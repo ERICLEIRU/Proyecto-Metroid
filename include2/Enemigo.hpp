@@ -19,24 +19,22 @@ protected:
     int vida;
 
 public:
-    Enemigo(int posicionX, int posicionY, int largoHitBox, int alturaHitbox, int inicioSpriteX, int inicioSpriteY) : Dibujo(posicionX, posicionY, "Enemies", largoHitBox, alturaHitbox, inicioSpriteX, inicioSpriteY),
-                                                                                                                     HitBox(this->posicion.LeerX(), this->posicion.LeerY(), largoHitBox, alturaHitbox)
+    Enemigo(int posicionX, int posicionY, int largoHitBox, int alturaHitbox, int inicioSpriteX, int inicioSpriteY) : Dibujo(posicionX, posicionY, "Enemies", largoHitBox, alturaHitbox, inicioSpriteX, inicioSpriteY), HitBox(this->posicion.LeerX(), this->posicion.LeerY(), largoHitBox, alturaHitbox)
     {
-        this->posicion.DesplazarX(posicionX);
-        this->posicion.DesplazarY(posicionY);
-        this->posicion.CambiarDireccionX();
+        this->posicion.AsignarX(posicionX);
+        this->posicion.AsignarY(posicionY);
     }
-    Vector LeerPosicion()
+    // Vector LeerPosicion()
+    // {
+    //     return this->posicion;
+    // }
+    void RecibirDanio(int danio)
     {
-        return this->posicion;
+        this->vida -= danio;
     }
-    void Actualizar()
+    int LeerVida()
     {
-
-        this->xHitBox = this->posicion.LeerX();
-        this->yHitBox = this->posicion.LeerY();
-
-        this->posicion.DesplazarX(1);
+        return this->vida;
     }
     ~Enemigo() {}
 };

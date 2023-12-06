@@ -20,9 +20,16 @@ protected:
 public:
     Personaje(int posicionX, int posicionY, int largoHitBox, int alturaHitbox, int inicioSpriteX, int inicioSpriteY) : Dibujo(posicionX, posicionY, "SamusPowerSuit", largoHitBox, alturaHitbox, inicioSpriteX, inicioSpriteY), HitBox(this->posicion.LeerX(), this->posicion.LeerY(), largoHitBox, alturaHitbox)
     {
-        this->posicion.DesplazarX(posicionX);
-        this->posicion.DesplazarY(posicionY);
-        this->posicion.CambiarDireccionX();
+        this->posicion.AsignarX(posicionX);
+        this->posicion.AsignarY(posicionY);
+    }
+    void RecibirDanio(int danio)
+    {
+        this->vida -= danio;
+    }
+    int LeerVida()
+    {
+        return this->vida;
     }
     ~Personaje() {}
 };
