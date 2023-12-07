@@ -6,7 +6,7 @@ class Crawler : public Enemigo
 private:
     /* data */
 public:
-    Crawler(int x, int y) : Enemigo(x, y, 16, 15, 1, 22)
+    Crawler(int posicionX, int posicionY) : Enemigo(posicionX, posicionY, 16, 15, 1, 22)
     {
         this->vida = 20;
         this->reductorVelocidad = 10;

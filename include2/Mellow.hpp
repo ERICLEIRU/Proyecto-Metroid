@@ -15,7 +15,7 @@ public:
     {
         if (this->cuentaRegresivaVelocidad < 0)
         {
-            if (this->posicion.LeerY() > 790 && this->posicion.LeerDireccionY() == 1 || this->posicion.LeerY() < 0 && this->posicion.LeerDireccionY() == -1)
+            if (this->posicion.LeerY() > 270 && this->posicion.LeerDireccionY() == 1 || this->posicion.LeerY() < 0 && this->posicion.LeerDireccionY() == -1)
                 this->posicion.CambiarDireccionY();
 
             this->posicion.DesplazarY(1);

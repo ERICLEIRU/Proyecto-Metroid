@@ -58,19 +58,44 @@ class Area
 class MovimientoEstablecido
 class Teclado
 
-class Personaje
-class Enemigo
-class Floater
+class Personaje{
+    #vida: int
+    #reductorVelocidad: int
+    #cuentaRegresiva: int
+    +Personaje( posicionX: int, posicionY: int, largoHitBox: int, alturaHitBox: int, inicioSpriteX: int, inicioSpriteY)
+    +~Personaje()
+    +RecibirDanio(danio: int): void
+    +LeerVida(): int
+}
+class Enemigo{
+    #vida: int
+    #reductorVelocidad: int
+    #cuentaRegresiva: int
+    +Enemigo( posicionX: int, posicionY: int, largoHitBox: int, alturaHitBox: int, inicioSpriteX: int, inicioSpriteY)
+    +~Enemigo()
+    +RecibirDanio(danio: int): void
+    +LeerVida(): int
+}
+class Mellow{
+    +Mellow( posicionX: int, posicionY: int)
+    +~Mellow()
+}
 class Hopper
 class Swooper
 class Swarm
 class Flyer
-class Crawler
+class Crawler{
+    +Crawler( posicionX: int, posicionY: int)
+    +~Crawler()
+}
 class Jefe
 class Ridley
 class MotherBrain
 class Kraid
-class SamusAran 
+class JugadorSamus{
+    +JugadorSamus( posicionX: int, posicionY: int)
+    +~JugadorSamus()
+} 
 class Energia
 
 
@@ -86,13 +111,52 @@ class Aire
 class PisoFalso
 
 class Animacion
-class Imagen
+class Dibujo{
+    - is_open: bool
+    - directorio: string
+    # textura : sf::Texture
+    # sprite : sf::Sprite
+    # intRect: sf::IntRect
+    # color: sf::Color
+    + Dibujo( posicionX: int, posicionY: int, recurso: string , largoHitBox: int, alturaHitBox: int, inicioSpriteX: int, inicioSpriteY: int)
+    + Dibujo( recurso: string)
+    + MandarSprite(): sf::Sprite
+}
 class Sonido
+
+class Vector{
+    - x: int
+    - y: int
+    -direccion_x: int
+    -direccion_y: int
+    +Vector()
+    +Vector(x: int, y: int)
+    +~Vector()
+    +CambiarDireccionY(): void
+    +CambiarDireccionX(): void
+    +LeerX(): int
+    +LeerY(): int
+    +LeerDireccionX(): int
+    +LeerDireccionY(): int
+    +DesplazarX(x : unsigned int  ): void
+    +DesplazarY( y: unsigned int ): void
+}
+class HitBox {
+    # xHitBox:unsigned int 
+    # yHitBox:unsigned int
+    # dxHitBox:unsigned int
+    # dyHitBox:unsigned int
+    +HitBox(x : unsigned int, y : unsigned int, dx : unsigned int, dy : unsigned int)
+    +~HitBox()
+    +DetectarColision(hitbox : HitBox): bool
+}
 
 Juego "1" *-- "1" Jugador
 Juego "1" *-- " 3" Pantalla
 Jugador "1" o-- "1" Teclado
 Jugador "1" o-- "1" ControladorMovimiento
+
+Dibujo "1" o-- "1" Vector
 
 GestorVentana "1" *-- "1..*"Pantalla
 PantallaJuego --|> Pantalla
@@ -131,7 +195,7 @@ PisoDestruibleMisilRojo "1" o-- "1" MisilRojo
 PisoDestruibleMisilVerde "1" o-- "1" MisilVerde
 PisoQuebradiso "1" o-- "1" Proyectil
 
-SamusAran "1" o-- "1..*" PowerUp
+JugadorSamus "1" o-- "1..*" PowerUp
 TanqueEnergia --|> PowerUp
 MaruBall --|> PowerUp
 VariaSuit --|> PowerUp
@@ -175,19 +239,21 @@ Aire --|>Atmosfera
 Lava "1" *-- "1" Damage 
 PisoFalso --|> Atmosfera
 
-Enemigo --|> Personaje
+Enemigo --|> Dibujo
+Enemigo --|> HitBox
+Enemigo --|> Actualizable
 Jefe --|> Personaje
-SamusAran --|> Personaje
+JugadorSamus --|> Personaje
 ControladorMovimiento "1" o-- "1..*" Personaje
 Enemigo  "1" *-- "0,1" ObjetosUsable
-SamusAran "1" o-- "0..*" ObjetosUsable
+JugadorSamus "1" o-- "0..*" ObjetosUsable
 Personaje "1" *-- "1" Energia
 Energia "1" o-- "0..*" Damage 
 Energia "1" *-- "1" Contador
-SamusAran "1" *-- "1" AreaSolida
+JugadorSamus "1" *-- "1" AreaSolida
 Personaje "1" *-- "1.. *" Animacion
 
-Floater --|> Enemigo
+Mellow --|> Enemigo
 Hopper --|> Enemigo
 Swooper --|> Enemigo
 Swarm --|> Enemigo
@@ -219,6 +285,6 @@ PuertaRoja "1" o-- "1" Misil
 PuertaVerde "1" o-- "1" MisilVerde
 
 
-Animacion "1" *-- "1..*" Imagen
+Animacion "1" *-- "1..*" Dibujo 
 Animacion "1" *-- "1..*" Sonido
 

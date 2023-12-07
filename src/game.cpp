@@ -18,11 +18,11 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     GestorVentana *ventana = new GestorVentana();
-    Crawler *crawler0 = new Crawler(200, 515);
-    Crawler *crawler1 = new Crawler(200, 400);
+    Crawler *crawler0 = new Crawler(200, 100);
+    Crawler *crawler1 = new Crawler(200, 200);
     Mellow *mellow0 = new Mellow(200, 300);
     Mellow *mellow1 = new Mellow(200, 200);
-    JugadorSamus *samus0 = new JugadorSamus(400, 300);
+    JugadorSamus *samus0 = new JugadorSamus(400, 150);
     list<Dibujo *> dibujos;
 
     dibujos.push_back(crawler0);
@@ -40,6 +40,7 @@ int main(int argc, char const *argv[])
     while (!ventana->DeboCerrar())
     {
         ventana->Dibujar(dibujos);
+        ventana->JugadorEnFondoX(samus0->llegoFondoX());
         for (auto &&actual : actualizables)
         {
             actual->Actualizar();

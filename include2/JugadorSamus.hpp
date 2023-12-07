@@ -8,7 +8,11 @@
 class JugadorSamus : public Personaje
 {
 private:
-    /* data */
+    bool llegofondoX = 0;
+    bool llegofondoY = 0;
+    bool llegoinicioX = 0;
+    bool llegoinicioY = 0;
+
 public:
     JugadorSamus(int posicionInicioX, int posicionInicioY) : Personaje(posicionInicioX, posicionInicioY, 15, 32, 2, 68)
     {
@@ -24,7 +28,14 @@ public:
                 this->posicion.CambiarDireccionY();
             }
             if (this->posicion.LeerY() > 1)
+            {
                 this->posicion.DesplazarY(1);
+            }
+            else
+            {
+                llegoinicioY = 1;
+            }
+
             this->intRect.top = 16;
             this->intRect.left = 142;
             this->sprite.setTextureRect(intRect);
@@ -35,9 +46,14 @@ public:
             {
                 this->posicion.CambiarDireccionY();
             }
-            if (this->posicion.LeerY() < 570)
+            if (this->posicion.LeerY() < 270)
+            {
                 this->posicion.DesplazarY(1);
-
+            }
+            else
+            {
+                llegofondoY = 1;
+            }
             this->intRect.top = 121;
             this->intRect.left = 129;
             this->sprite.setTextureRect(intRect);
@@ -49,7 +65,13 @@ public:
                 this->posicion.CambiarDireccionX();
             }
             if (this->posicion.LeerX() > 1)
+            {
                 this->posicion.DesplazarX(1);
+            }
+            else
+            {
+                llegoinicioX = 1;
+            }
             this->intRect.top = 191;
             this->intRect.left = 204;
             this->sprite.setTextureRect(intRect);
@@ -61,7 +83,13 @@ public:
                 this->posicion.CambiarDireccionX();
             }
             if (this->posicion.LeerX() < 785)
+            {
                 this->posicion.DesplazarX(1);
+            }
+            else
+            {
+                llegofondoX = 1;
+            }
             this->intRect.top = 11;
             this->intRect.left = 2;
             this->sprite.setTextureRect(intRect);
@@ -69,6 +97,15 @@ public:
         this->xHitBox = this->posicion.LeerX();
         this->yHitBox = this->posicion.LeerY();
         this->sprite.setPosition(this->posicion.LeerX(), this->posicion.LeerY());
+    }
+    int llegoFondoX()
+    {
+        if (llegofondoX)
+        {
+            llegofondoX = 0;
+            return 1;
+        }
+        return 0;
     }
     ~JugadorSamus() {}
 };

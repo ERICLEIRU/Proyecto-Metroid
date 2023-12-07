@@ -18,15 +18,22 @@ protected:
     sf::RenderWindow window;
     sf::Event event;
     sf::RectangleShape fondo;
+    sf::Texture texturaFondo;
+    sf::Sprite spriteFondo;
+    sf::IntRect intRectFondo;
 
 public:
     GestorVentana(/* args */)
     {
-        this->window.create(sf::VideoMode(800, 600), "Metroid");
+        this->window.create(sf::VideoMode(800, 300), "Metroid");
         window.setFramerateLimit(360);
         sf::Event event;
         fondo.setSize(sf::Vector2f(800, 800));
-        fondo.setFillColor(sf::Color(115, 115, 115));
+        this->texturaFondo.loadFromFile("./imagenes/Brinkstar.png");
+        this->spriteFondo.setTexture(texturaFondo);
+        this->intRectFondo = sf::IntRect(578, 3186, 800, 300);
+        this->spriteFondo.setTextureRect(intRectFondo);
+        this->spriteFondo.setPosition(0, 0);
     }
     void Actualizar(/*list<Actualizable *> listaActualizables*/)
     {
@@ -41,7 +48,7 @@ public:
     void Dibujar(list<Dibujo *> listaDibujos)
     {
         this->window.clear();
-        this->window.draw(fondo);
+        this->window.draw(spriteFondo);
         for (auto &&dibujo : listaDibujos)
         {
             this->window.draw(dibujo->MandarSprite());
@@ -61,6 +68,14 @@ public:
     void Cerrar()
     {
         this->window.close();
+    }
+    void JugadorEnFondoX(int fondoX)
+    {
+        if (fondoX)
+        {
+            this->intRectFondo.left = intRectFondo.left + 1;
+            this->spriteFondo.setTextureRect(intRectFondo);
+        }
     }
     ~GestorVentana()
     {
