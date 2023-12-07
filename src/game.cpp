@@ -13,8 +13,6 @@
 // #include <Hopper.hpp>
 // #include <Proyectil.hpp>
 
-// #include <SamusAran.hpp>
-
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -46,21 +44,11 @@ int main(int argc, char const *argv[])
         {
             actual->Actualizar();
         }
-        sleep(0.5);
     }
 
     // Ventana *ventana = new Ventana();
     //
     // list<Proyectil *> proyectiles;
-
-    // SamusAran *samus0 = new SamusAran(10, 10);
-    // dibujos.push_back(samus0);
-    // actualizables.push_back(samus0);
-    // dibujos.push_back(crawler0);
-    // actualizables.push_back(crawler0);
-    // Hopper* hopper0 = new Hopper(150, 10);
-    // dibujos.push_back(hopper0);
-    // actualizables.push_back(hopper0);
 
     // while (!ventana->DeboCerrar())
     // {
@@ -98,22 +86,6 @@ int main(int argc, char const *argv[])
     //             tempDibujos.push_back(p);
     //             tempActualizables.push_back(p);
     //         }
-
-    //     }
-
-    //     ventana->Actualizar(tempActualizables);
-
-    // ventana->Dibujar(tempDibujos);
-
-    // for (auto &&iterador : actualizables)
-    // {
-    //     if(iterador->Actualizar() <0){
-    //         actualizables.erase(iterador);
-    //     }
-
-    // }
-
-    //  ventana.Cerrar()};
 
     return 0;
 }

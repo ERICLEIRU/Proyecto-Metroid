@@ -17,6 +17,8 @@ class Enemigo : public Dibujo, public Actualizable, public HitBox
 private:
 protected:
     int vida;
+    int reductorVelocidad;
+    int cuentaRegresivaVelocidad = 0;
 
 public:
     Enemigo(int posicionX, int posicionY, int largoHitBox, int alturaHitbox, int inicioSpriteX, int inicioSpriteY) : Dibujo(posicionX, posicionY, "Enemies", largoHitBox, alturaHitbox, inicioSpriteX, inicioSpriteY), HitBox(this->posicion.LeerX(), this->posicion.LeerY(), largoHitBox, alturaHitbox)

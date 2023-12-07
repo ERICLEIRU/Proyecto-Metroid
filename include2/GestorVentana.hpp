@@ -23,6 +23,7 @@ public:
     GestorVentana(/* args */)
     {
         this->window.create(sf::VideoMode(800, 600), "Metroid");
+        window.setFramerateLimit(360);
         sf::Event event;
         fondo.setSize(sf::Vector2f(800, 800));
         fondo.setFillColor(sf::Color(115, 115, 115));

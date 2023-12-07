@@ -3,6 +3,7 @@
 class Juego 
 class Jugador
 
+class GestorVentana
 class Pantalla
 class PantallaPause
 class PantallaJuego
@@ -93,6 +94,7 @@ Juego "1" *-- " 3" Pantalla
 Jugador "1" o-- "1" Teclado
 Jugador "1" o-- "1" ControladorMovimiento
 
+GestorVentana "1" *-- "1..*"Pantalla
 PantallaJuego --|> Pantalla
 PantallaPause --|> Pantalla
 PantallaJuego "1" *-- "1..*" Atmosfera
